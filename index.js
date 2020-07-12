@@ -4,6 +4,7 @@ const bodyParser=require('body-parser')
 const cookieParser = require('cookie-parser')
 const {User} =require('./models/user')
 const { json } = require('body-parser')
+const config=require('./config/key')
 const app=express()
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -11,7 +12,7 @@ app.use(bodyParser.json())
 app.use(cookieParser())
 
 
-mongoose.connect("mongodb+srv://admin-leen:Test123@cluster0-3nyoy.mongodb.net/test?retryWrites=true&w=majority", {
+mongoose.connect(config.mongoURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(()=>{console.log("DB connected")})
