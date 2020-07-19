@@ -15,6 +15,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json())
 app.use(cookieParser())
 
+
 mongoose.connect(config.mongoURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -26,6 +27,9 @@ mongoose.connect(config.mongoURI, {
   })
 mongoose.set('useCreateIndex', true);
 
+app.get("/",(req,res)=>{
+  res.send("Hello")
+})
 
 app.get('/api/user/auth',auth,(req,res)=>{
   res.status(200).json({
